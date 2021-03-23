@@ -5,6 +5,7 @@ const routes = require('./routes');
 const db = require('./config/db');
 const { vardump } = require('./helpers');
 require('./models/Proyecto');
+require('./models/Tarea');
 
 //craer una app de express
 const app = express();
