@@ -1,0 +1,19 @@
+extends layout
+
+include mixins/crear 
+//- incluir los mixins
+
+block contenido
+    .contenido-principal 
+        h1= nombrePag
+
+        //-pre= vardump(proyecto)
+
+        if errores  
+            each error in errores
+                .alerta.error= error.msj
+        //- implementacion de mixins
+        +crearProyecto(proyecto) 
+        
+
+        
