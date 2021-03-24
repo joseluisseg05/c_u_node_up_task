@@ -208,8 +208,8 @@ body.index {
     background-color: #F2F2F2;
     max-width: 800px;
     width: 90%;
-    margin: 2rem auto 0 auto;
-    padding: 2rem;
+    margin: 1rem auto 0 auto;
+    padding: 10px;
     border: 1px solid #999;
 }
 .listado-pendientes ul {
