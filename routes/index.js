@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const proyect = require('../controllers/proyectos');
+const tareas = require('../controllers/tareas');
 
 const router = Router();
 
@@ -17,6 +18,12 @@ module.exports = function () {
 
     //eliminar
     router.delete('/proyectos/:url', proyect.eleminar);
+
+
+    /* 
+    Tareas
+    */
+   router.post('/proyectos/:url', tareas.crear);
 
     return router;
 } 
