@@ -27,6 +27,8 @@ module.exports = function () {
 
    //actualizar
    router.patch('/tareas/:id', tareas.cambiarEstado);
+   //eliminarr
+   router.delete('/tareas/:id', tareas.eliminar);
 
     return router;
 } 
