@@ -4,6 +4,9 @@ const express = require('express');
 const routes = require('./routes');
 const db = require('./config/db');
 const { vardump } = require('./helpers');
+const flash = require('connect-flash');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
 require('./models/Proyecto');
 require('./models/Tarea');
@@ -11,6 +14,9 @@ require('./models/Usuarios');
 
 //craer una app de express
 const app = express();
+
+//body parse
+app.use(express.urlencoded({extends: true}));
 
 //archivos public
 app.use(express.static('public'));
@@ -21,14 +27,24 @@ app.set('view engine', 'pug');
 //carpeta vistas
 app.set('views', path.join(__dirname, '/views'));
 
+//flash mesajes
+app.use(flash());
+
+app.use(cookieParser());
+
+//sessiones
+app.use(session({
+    secret: 'supersecreto',
+    resave: false,
+    saveUninitialized: false
+}));
+
 //helpers
 app.use((req, res, next)=> {
     res.locals.vardump = vardump;
+    res.locals.mensajes = req.flash();
     next();
 });
-
-//body parse
-app.use(express.urlencoded({extends: true}));
 
 //rutas
 app.use('/', routes() );
