@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const proyect = require('../controllers/proyectos');
 const tareas = require('../controllers/tareas');
+const usuarios = require('../controllers/usuarios');
 
 const router = Router();
 
@@ -29,6 +30,11 @@ module.exports = function () {
    router.patch('/tareas/:id', tareas.cambiarEstado);
    //eliminarr
    router.delete('/tareas/:id', tareas.eliminar);
+
+
+   /*Creacion de nueva cuenta*/
+   router.get('/crear-cuenta', usuarios.formCrearCuanta);
+   router.post('/crear-cuenta', usuarios.crearCuanta);
 
     return router;
 } 
