@@ -1,12 +1,20 @@
 const Usuarios = require('../models/Usuarios');
 
-exports.formCrearCuanta = (req, res) => {
+exports.formCrearCuenta = (req, res) => {
     res.render('crearCuenta', {
         nombrePag: 'Crear Cuenta de UpTask'
     })
 }
 
-exports.crearCuanta = async(req, res) => {
+exports.formIniciarSesion = (req, res) => {
+    const { error } = res.locals.mensajes
+    res.render('iniciarSesion', {
+        nombrePag: 'Inicio de sesion de UpTask',
+        error 
+    })
+}
+
+exports.crearCuenta = async(req, res) => {
     const { email, password } = req.body;
 
     try {

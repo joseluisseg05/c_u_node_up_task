@@ -1,12 +1,13 @@
 const path = require('path');
 const express = require('express');
+const flash = require('connect-flash');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
 const routes = require('./routes');
 const db = require('./config/db');
 const { vardump } = require('./helpers');
-const flash = require('connect-flash');
-const session = require('express-session');
-const cookieParser = require('cookie-parser');
+const passport = require('./config/passport');
 
 require('./models/Proyecto');
 require('./models/Tarea');
@@ -38,6 +39,9 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 //helpers
 app.use((req, res, next)=> {
