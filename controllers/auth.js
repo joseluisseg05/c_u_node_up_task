@@ -15,3 +15,10 @@ exports.usuarioAutentificado = (req, res, next) => {
     // sinoredirigir al formulario 
     return res.redirect('/iniciar-sesion');
 }
+
+//cerrar sesion 
+exports.cerrarSesion = (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/');
+    })
+}
