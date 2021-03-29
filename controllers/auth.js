@@ -1,7 +1,7 @@
 const passport = require('passport');
 
 exports.autenticarUser = passport.authenticate('local', {
-    successRedirect:'/',
+    successRedirect:'/home',
     failureRedirect: '/iniciar-sesion',
     failureFlash: true,
     badRequestMessage: 'Ambos campos son obligatorios'
@@ -19,6 +19,6 @@ exports.usuarioAutentificado = (req, res, next) => {
 //cerrar sesion 
 exports.cerrarSesion = (req, res) => {
     req.session.destroy(() => {
-        res.redirect('/');
+        res.redirect('/iniciar-sesion');
     })
 }

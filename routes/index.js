@@ -7,7 +7,12 @@ const auth = require('../controllers/auth')
 const router = Router();
 
 module.exports = function () {
-    router.get('/', proyect.home);
+    router.get('/', proyect.dash);
+
+    router.get('/home',
+        auth.usuarioAutentificado,
+        proyect.home
+    );
     router.get('/nuevo-proyecto', 
         auth.usuarioAutentificado,
         proyect.formulario
@@ -69,7 +74,7 @@ module.exports = function () {
     router.post('/iniciar-sesion', auth.autenticarUser)
 
     //cerrar sesion 
-    router.get('/cerrar-sesion', )
+    router.get('/cerrar-sesion', auth.cerrarSesion);
 
     return router;
 } 
