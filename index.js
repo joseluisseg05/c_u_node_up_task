@@ -9,6 +9,8 @@ const db = require('./config/db');
 const { vardump } = require('./helpers');
 const passport = require('./config/passport');
 
+require('dotenv').config({ path: '.env'});
+
 require('./models/Proyecto');
 require('./models/Tarea');
 require('./models/Usuarios');
@@ -60,4 +62,9 @@ db.sync()
     .catch(error => console.log(error));
 
 //
-app.listen(8080);
+const host = process.env.HOST || '0.0.0.0';
+const port = process.env.PORT || 8080;
+
+app.listen(port, host, () => {
+    console.log('Servidor Online');
+})
